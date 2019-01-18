@@ -1,4 +1,8 @@
 ---
+branches:
+# whitelist
+only:
+  - master
 sudo: required
 language: python
 python:
