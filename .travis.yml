@@ -1,0 +1,14 @@
+---
+sudo: required
+language: python
+python:
+  - "3.6"
+dist: trusty
+services:
+- docker
+before_install:
+- sudo apt-get -qq update
+script:
+- sudo make build
+- sudo make run
+- sudo make teardown
