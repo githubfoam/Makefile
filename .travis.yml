@@ -56,7 +56,7 @@ matrix:
         - sudo dpkg -i xmake-v2.2.9.amd64.deb
         - xmake create test #OK
         # - xmake f -m debug -y
-        - xmake
+        - xmake -y
         - xmake run
         - xmake create -l c++ -t qt.quickapp test #create qt-based quickapp
         - xmake
