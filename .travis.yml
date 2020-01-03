@@ -133,7 +133,8 @@ matrix:
         - pip install -r requirements.txt
         - PowerShell -Command 'Set-ExecutionPolicy -ExecutionPolicy RemoteSigned'
         - PowerShell -Command 'Invoke-Expression (Invoke-Webrequest 'https://raw.githubusercontent.com/tboox/xmake/master/scripts/get.ps1' -UseBasicParsing).Content'
-        - xmake create -t console_tbox test && cd test
+        - xmake create -t console_tbox test
+        - cd test
         - xmake
         # - scoop install xmake
         # - Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh') #Make sure PowerShell 5 (or later, include PowerShell Core) and .NET Framework 4.5 (or later) are installed
