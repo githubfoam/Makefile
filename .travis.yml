@@ -7,123 +7,125 @@ matrix:
   fast_finish: true
   include:
 
-    - name: "Python 3.7 on bionic"
-      dist: bionic
-      language: python
-      python: 3.7
-      before_install:
-        - pip3 install virtualenv
-        - virtualenv -p $(which python3) ~venvpy3
-        - source ~venvpy3/bin/activate
-      install:
-        - pip install -r requirements.txt
-      script:
-        - set -x
-        - "wget https://raw.githubusercontent.com/tboox/xmake/master/scripts/get.sh -O -"
-        # - xmake create -l c -P ./test_xmake
-        # - xmake
-        # - xmake run test_xmake
-        # - xmake run -d test_xmake
-      after_success:
-        - deactivate
-
-    - name: "Python 2.7 on xenial"
-      dist: xenial
-      language: python
-      python: 2.7
-      before_install:
-        - pip install virtualenv
-        - virtualenv -p $(which python2) ~venvpy2
-        - source ~venvpy2/bin/activate
-      install:
-        - pip install -r requirements.txt
-      script:
-        - set -x
-        - curl -fsSL https://raw.githubusercontent.com/tboox/xmake/master/scripts/get.sh
-      #   - xmake create -l c -P ./test_xmake
-      #   - xmake
-      #   - xmake run test_xmake
-      #   - xmake run -d test_xmake
-      after_success:
-        - deactivate
-
-    - name: "Python 2.7.17 on macOS xcode10.2"
-      os: osx
-      osx_image: xcode10.2
-      language: shell
-      before_install:
-        - pip install virtualenv
-        - virtualenv -p $(which python2) ~venvpy2
-        - source ~venvpy2/bin/activate
-      install:
-        - pip install -r requirements.txt
-        - brew install xmake
-      script: skip
-        # - xmake create -l c -P ./test_xmake
-        # - xmake
-        # - xmake run test_xmake
-        # - xmake run -d test_xmake
-      after_success: skip
-
-    - name: "Python 3.7.5 on macOS xcode10.2"
-      os: osx
-      osx_image: xcode10.2
-      language: shell
-      before_install:
-        - pip3 install virtualenv
-        - virtualenv -p $(which python3) ~venvpy3
-        - source ~venvpy3/bin/activate
-      install:
-        - pip install -r requirements.txt
-        - brew install xmake
-      script: skip
-        # - xmake create -l c -P ./test_xmake
-        # - xmake
-        # - xmake run test_xmake
-        # - xmake run -d test_xmake
-      after_success: skip
-
-
-    - name: "Python 3.7.5 on macOS xcode9.4 "
-      os: osx
-      osx_image: xcode9.4
-      language: shell
-      before_install:
-        - pip3 install virtualenv
-        - virtualenv -p $(which python3) ~venvpy3
-        - source ~venvpy3/bin/activate
-      install:
-        - pip install -r requirements.txt
-        - brew install xmake
-      script: skip
-        # - xmake create -l c -P ./test_xmake
-        # - xmake
-        # - xmake run test_xmake
-        # - xmake run -d test_xmake
-      after_success: skip
-
-    - name: "Python 3.8 pinned chocolatey package on Windows"
-      os: windows
-      language: shell
-      env:
-        - PATH=/c/Python38:/c/Python38/Scripts:$PATH
-      before_install:
-        - choco install python --version 3.8.1
-        - python -m pip install --upgrade pip
-        - pip3 install virtualenv
-        - virtualenv $HOME/venvpy3
-        - source $HOME/venvpy3/Scripts/activate
-      install:
-        - pip install -r requirements.txt
-        # - Invoke-Expression (Invoke-Webrequest 'https://raw.githubusercontent.com/tboox/xmake/master/scripts/get.ps1' -UseBasicParsing).Content
-      script: skip
-      after_success: skip
+    # - name: "Python 3.7 on bionic"
+    #   dist: bionic
+    #   language: python
+    #   python: 3.7
+    #   before_install:
+    #     - pip3 install virtualenv
+    #     - virtualenv -p $(which python3) ~venvpy3
+    #     - source ~venvpy3/bin/activate
+    #   install:
+    #     - pip install -r requirements.txt
+    #   script:
+    #     - set -x
+    #     - "wget https://raw.githubusercontent.com/tboox/xmake/master/scripts/get.sh -O -"
+    #     # - xmake create -l c -P ./test_xmake
+    #     # - xmake
+    #     # - xmake run test_xmake
+    #     # - xmake run -d test_xmake
+    #   after_success:
+    #     - deactivate
+    #
+    # - name: "Python 2.7 on xenial"
+    #   dist: xenial
+    #   language: python
+    #   python: 2.7
+    #   before_install:
+    #     - pip install virtualenv
+    #     - virtualenv -p $(which python2) ~venvpy2
+    #     - source ~venvpy2/bin/activate
+    #   install:
+    #     - pip install -r requirements.txt
+    #   script:
+    #     - set -x
+    #     - curl -fsSL https://raw.githubusercontent.com/tboox/xmake/master/scripts/get.sh
+    #   #   - xmake create -l c -P ./test_xmake
+    #   #   - xmake
+    #   #   - xmake run test_xmake
+    #   #   - xmake run -d test_xmake
+    #   after_success:
+    #     - deactivate
+    #
+    # - name: "Python 2.7.17 on macOS xcode10.2"
+    #   os: osx
+    #   osx_image: xcode10.2
+    #   language: shell
+    #   before_install:
+    #     - pip install virtualenv
+    #     - virtualenv -p $(which python2) ~venvpy2
+    #     - source ~venvpy2/bin/activate
+    #   install:
+    #     - pip install -r requirements.txt
+    #     - brew install xmake
+    #   script: skip
+    #     # - xmake create -l c -P ./test_xmake
+    #     # - xmake
+    #     # - xmake run test_xmake
+    #     # - xmake run -d test_xmake
+    #   after_success: skip
+    #
+    # - name: "Python 3.7.5 on macOS xcode10.2"
+    #   os: osx
+    #   osx_image: xcode10.2
+    #   language: shell
+    #   before_install:
+    #     - pip3 install virtualenv
+    #     - virtualenv -p $(which python3) ~venvpy3
+    #     - source ~venvpy3/bin/activate
+    #   install:
+    #     - pip install -r requirements.txt
+    #     - brew install xmake
+    #   script: skip
+    #     # - xmake create -l c -P ./test_xmake
+    #     # - xmake
+    #     # - xmake run test_xmake
+    #     # - xmake run -d test_xmake
+    #   after_success: skip
+    #
+    #
+    # - name: "Python 3.7.5 on macOS xcode9.4 "
+    #   os: osx
+    #   osx_image: xcode9.4
+    #   language: shell
+    #   before_install:
+    #     - pip3 install virtualenv
+    #     - virtualenv -p $(which python3) ~venvpy3
+    #     - source ~venvpy3/bin/activate
+    #   install:
+    #     - pip install -r requirements.txt
+    #     - brew install xmake
+    #   script: skip
+    #     # - xmake create -l c -P ./test_xmake
+    #     # - xmake
+    #     # - xmake run test_xmake
+    #     # - xmake run -d test_xmake
+    #   after_success: skip
+    #
+    # - name: "Python 3.8 pinned chocolatey package on Windows"
+    #   os: windows
+    #   language: shell
+    #   env:
+    #     - PATH=/c/Python38:/c/Python38/Scripts:$PATH
+    #   before_install:
+    #     - choco install python --version 3.8.1
+    #     - python -m pip install --upgrade pip
+    #     - pip3 install virtualenv
+    #     - virtualenv $HOME/venvpy3
+    #     - source $HOME/venvpy3/Scripts/activate
+    #   install:
+    #     - pip install -r requirements.txt
+    #     # - Invoke-Expression (Invoke-Webrequest 'https://raw.githubusercontent.com/tboox/xmake/master/scripts/get.ps1' -UseBasicParsing).Content
+    #   script: skip
+    #   after_success: skip
 
     - name: "Python 3.7  on Windows"
       os: windows
       language: shell
       env: PATH=/c/Python37:/c/Python37/Scripts:$PATH
       before_install:
+        - choco install python --version 3.7
+        - python --version
         - pip3 install virtualenv
         - virtualenv $HOME/venv
         - source $HOME/venv/Scripts/activate
