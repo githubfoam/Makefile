@@ -137,7 +137,7 @@ matrix:
         - PowerShell -Command 'Invoke-Expression (Invoke-Webrequest 'https://raw.githubusercontent.com/tboox/xmake/master/scripts/get.ps1' -UseBasicParsing).Content'
         - xmake create -t console_tbox test
         - cd test
-        - xmake
+        - xmake -y
         # - scoop install xmake
         # - Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh') #Make sure PowerShell 5 (or later, include PowerShell Core) and .NET Framework 4.5 (or later) are installed
         # - Set-ExecutionPolicy RemoteSigned -scope CurrentUser #change the execution policy (i.e. enable Powershell)
