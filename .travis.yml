@@ -18,12 +18,11 @@ matrix:
         - pip install -r requirements.txt
       script:
         - set -x
-        # - curl -fsSL https://raw.githubusercontent.com/tboox/xmake/master/scripts/get.sh
         - "wget https://raw.githubusercontent.com/tboox/xmake/master/scripts/get.sh -O -"
         - xmake create -l c -P ./test_xmake
         - xmake
         - xmake run test_xmake
-        - xmake run -d test_xmake 
+        - xmake run -d test_xmake
 
     - name: "Python 2.7 on xenial"
       dist: xenial
@@ -38,14 +37,12 @@ matrix:
       script:
         - set -x
         - curl -fsSL https://raw.githubusercontent.com/tboox/xmake/master/scripts/get.sh
-        # - "wget https://raw.githubusercontent.com/tboox/xmake/master/scripts/get.sh -O -"
-
       after_success:
         - deactivate
 
     - name: "Python 2.7.17 on macOS xcode10.2"
       os: osx
-      osx_image: xcode10.2  # travis-ci-macos10.14-xcode10.2-19-1573099784 (via amqp)
+      osx_image: xcode10.2
       language: shell
       before_install:
         - pip install virtualenv
@@ -84,7 +81,7 @@ matrix:
       after_success: skip
 
     - name: "Python 3.8 on Windows"
-      os: windows           # travis-ci-windows-1803-containers-1569974367-710c8b1d
+      os: windows           
       language: shell
       env:
         - PATH=/c/Python38:/c/Python38/Scripts:$PATH
