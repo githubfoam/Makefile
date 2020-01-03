@@ -142,17 +142,17 @@ matrix:
       install: skip
         # - pip install -r requirements.txt
       script:
-        - PowerShell -Command 'Set-ExecutionPolicy -ExecutionPolicy RemoteSigned'
-        - PowerShell -Command 'Invoke-Expression (Invoke-Webrequest 'https://raw.githubusercontent.com/tboox/xmake/master/scripts/get.ps1' -UseBasicParsing).Content'
-        - xmake create -t console_tbox test
-        - cd test
-        - xmake -y
-        - xmake f -p iphoneos -y # Switching to the iOS platform for compilation will reinstall the iOS version of the tbox library for linking
-        - xmake -y
+        # - PowerShell -Command 'Set-ExecutionPolicy -ExecutionPolicy RemoteSigned'
+        # - PowerShell -Command 'Invoke-Expression (Invoke-Webrequest 'https://raw.githubusercontent.com/tboox/xmake/master/scripts/get.ps1' -UseBasicParsing).Content'
+        # - xmake create -t console_tbox test
+        # - cd test
+        # - xmake -y
+        # - xmake f -p iphoneos -y # Switching to the iOS platform for compilation will reinstall the iOS version of the tbox library for linking
+        # - xmake -y
         # - xmake f -p android [--ndk=~/android-ndk-r16b] -y # Switch to the Android platform arm64-v8a architecture compilation
         # - xmake -y
         # - xmake f -m debug -y #mode.debug compile, xmake f is a shorthand for the xmake config
         # - scoop install xmake
-        # - Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh') #Make sure PowerShell 5 (or later, include PowerShell Core) and .NET Framework 4.5 (or later) are installed
+        - PowerShell -Command 'Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')'' #Make sure PowerShell 5 (or later, include PowerShell Core) and .NET Framework 4.5 (or later) are installed
         # - Set-ExecutionPolicy RemoteSigned -scope CurrentUser #change the execution policy (i.e. enable Powershell)
       after_success: skip
