@@ -19,11 +19,11 @@ matrix:
         # - source ~venvpy3/bin/activate
       install: skip
         # - pip install -r requirements.txt
-      script:
-        - sudo apt-get update
-        - wget https://github.com/xmake-io/xmake/releases/download/v$XMAKE_VERSION/xmake-v$XMAKE_VERSION.amd64.deb
-        - sudo dpkg -i xmake-v2.2.9.amd64.deb
-        - xmake create test
+      script: skip
+        # - sudo apt-get update
+        # - wget https://github.com/xmake-io/xmake/releases/download/v$XMAKE_VERSION/xmake-v$XMAKE_VERSION.amd64.deb
+        # - sudo dpkg -i xmake-v2.2.9.amd64.deb
+        # - xmake create test
         # - xmake f -p linux -a x86 -m debug
         # - bash <(curl -fsSL https://raw.githubusercontent.com/tboox/xmake/master/scripts/get.sh)
         # - sudo xmake create -t console_tbox test && cd test
@@ -34,46 +34,52 @@ matrix:
         # - xmake
         # - xmake run test_xmake
         # - xmake run -d test_xmake
+      after_success: skip
+      #   - deactivate
+
+    - name: "Python 2.7 on xenial"
+      dist: xenial
+      language: python
+      python: 2.7
+      env:
+      - XMAKE_VERSION="2.2.9"
+      before_install: skip
+        # - pip install virtualenv
+        # - virtualenv -p $(which python2) ~venvpy2
+        # - source ~venvpy2/bin/activate
+      install: skip
+        # - pip install -r requirements.txt
+      script:
+        # - set -x
+        # - curl -fsSL https://raw.githubusercontent.com/tboox/xmake/master/scripts/get.sh
+        - wget https://github.com/xmake-io/xmake/releases/download/v$XMAKE_VERSION/xmake-v$XMAKE_VERSION.amd64.deb
+        - sudo dpkg -i xmake-v2.2.9.amd64.deb
+        - xmake create test
+      #   - xmake create -l c -P ./test_xmake
+      #   - xmake
+      #   - xmake run test_xmake
+      #   - xmake run -d test_xmake
       after_success:
         - deactivate
 
-    # - name: "Python 2.7 on xenial"
-    #   dist: xenial
-    #   language: python
-    #   python: 2.7
-    #   before_install:
-    #     - pip install virtualenv
-    #     - virtualenv -p $(which python2) ~venvpy2
-    #     - source ~venvpy2/bin/activate
-    #   install:
-    #     - pip install -r requirements.txt
-    #   script:
-    #     - set -x
-    #     - curl -fsSL https://raw.githubusercontent.com/tboox/xmake/master/scripts/get.sh
-    #   #   - xmake create -l c -P ./test_xmake
-    #   #   - xmake
-    #   #   - xmake run test_xmake
-    #   #   - xmake run -d test_xmake
-    #   after_success:
-    #     - deactivate
-    #
-    # - name: "Python 2.7.17 on macOS xcode10.2"
-    #   os: osx
-    #   osx_image: xcode10.2
-    #   language: shell
-    #   before_install:
-    #     - pip install virtualenv
-    #     - virtualenv -p $(which python2) ~venvpy2
-    #     - source ~venvpy2/bin/activate
-    #   install:
-    #     - pip install -r requirements.txt
-    #     - brew install xmake
-    #   script: skip
-    #     # - xmake create -l c -P ./test_xmake
-    #     # - xmake
-    #     # - xmake run test_xmake
-    #     # - xmake run -d test_xmake
-    #   after_success: skip
+    - name: "Python 2.7.17 on macOS xcode10.2"
+      os: osx
+      osx_image: xcode10.2
+      language: shell
+      before_install:
+        # - pip install virtualenv
+        # - virtualenv -p $(which python2) ~venvpy2
+        # - source ~venvpy2/bin/activate
+      install:
+        # - pip install -r requirements.txt
+        - brew install xmake
+      script:
+        - xmake create test
+        # - xmake create -l c -P ./test_xmake
+        # - xmake
+        # - xmake run test_xmake
+        # - xmake run -d test_xmake
+      after_success: skip
     #
     # - name: "Python 3.7.5 on macOS xcode10.2"
     #   os: osx
