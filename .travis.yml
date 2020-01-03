@@ -23,7 +23,8 @@ matrix:
         - sudo apt-get update
         - wget https://github.com/xmake-io/xmake/releases/download/v$XMAKE_VERSION/xmake-v$XMAKE_VERSION.amd64.deb
         - sudo dpkg -i xmake-v2.2.9.amd64.deb
-        - xmake f -p linux -a x86 -m debug
+        - xmake create test
+        # - xmake f -p linux -a x86 -m debug
         # - bash <(curl -fsSL https://raw.githubusercontent.com/tboox/xmake/master/scripts/get.sh)
         # - sudo xmake create -t console_tbox test && cd test
         # - sudo xmake
