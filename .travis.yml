@@ -1,18 +1,116 @@
 ---
-branches:
-# whitelist
-only:
-  - master
-sudo: required
-language: python
-python:
-  - "3.6"
-dist: trusty
-services:
-- docker
-before_install:
-- sudo apt-get -qq update
-script:
-- sudo make build
-- sudo make run
-- sudo make teardown
+matrix:
+  fast_finish: true
+  include:
+
+    - name: "Python 3.7 on bionic"
+      dist: bionic
+      language: python
+      python: 3.7
+      before_install:
+        - pip3 install virtualenv
+        - virtualenv -p $(which python3) ~venvpy3
+        - source ~venvpy3/bin/activate
+      install:
+        - pip3 install -U pip
+        - pip3 install -U pytest
+        - pip3 install codecov
+        - pip install -r requirements.txt
+      script:
+        - set -x
+        # - curl -fsSL https://raw.githubusercontent.com/tboox/xmake/master/scripts/get.sh
+        - "wget https://raw.githubusercontent.com/tboox/xmake/master/scripts/get.sh -O -"
+        - xmake create -l c -P ./test_xmake
+        - xmake
+        - xmake run test_xmake
+        - xmake run -d test_xmake 
+
+    - name: "Python 2.7 on xenial"
+      dist: xenial
+      language: python
+      python: 2.7
+      before_install:
+        - pip install virtualenv
+        - virtualenv -p $(which python2) ~venvpy2
+        - source ~venvpy2/bin/activate
+      install:
+        - pip install -r requirements.txt
+      script:
+        - set -x
+        - curl -fsSL https://raw.githubusercontent.com/tboox/xmake/master/scripts/get.sh
+        # - "wget https://raw.githubusercontent.com/tboox/xmake/master/scripts/get.sh -O -"
+
+      after_success:
+        - deactivate
+
+    - name: "Python 2.7.17 on macOS xcode10.2"
+      os: osx
+      osx_image: xcode10.2  # travis-ci-macos10.14-xcode10.2-19-1573099784 (via amqp)
+      language: shell
+      before_install:
+        - pip install virtualenv
+        - virtualenv -p $(which python2) ~venvpy2
+        - source ~venvpy2/bin/activate
+      install:
+        - brew install xmake
+      script: skip
+      after_success: skip
+
+    - name: "Python 3.7.5 on macOS xcode10.2"
+      os: osx
+      osx_image: xcode10.2
+      language: shell
+      before_install:
+        - pip3 install virtualenv
+        - virtualenv -p $(which python3) ~venvpy3
+        - source ~venvpy3/bin/activate
+      install:
+        - brew install xmake
+      script: skip
+      after_success: skip
+
+
+    - name: "Python 3.7.5 on macOS xcode9.4 "
+      os: osx
+      osx_image: xcode9.4
+      language: shell
+      before_install:
+        - pip3 install virtualenv
+        - virtualenv -p $(which python3) ~venvpy3
+        - source ~venvpy3/bin/activate
+      install:
+        - brew install xmake
+      script: skip
+      after_success: skip
+
+    - name: "Python 3.8 on Windows"
+      os: windows           # travis-ci-windows-1803-containers-1569974367-710c8b1d
+      language: shell
+      env:
+        - PATH=/c/Python38:/c/Python38/Scripts:$PATH
+      before_install:
+        - choco install python --version 3.8.1
+        - python -m pip install --upgrade pip
+        - pip3 install --upgrade pytest
+        - pip3 install codecov
+        - pip3 install virtualenv
+        - virtualenv $HOME/venvpy3
+        - source $HOME/venvpy3/Scripts/activate
+      install:
+        - Invoke-Expression (Invoke-Webrequest 'https://raw.githubusercontent.com/tboox/xmake/master/scripts/get.ps1' -UseBasicParsing).Content
+      script: skip
+      after_success: skip
+
+    - name: "Python 3.7 pinned chocolatey package on Windows"
+      os: windows
+      language: shell
+      env: PATH=/c/Python37:/c/Python37/Scripts:$PATH
+      before_install:
+        - Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh') #Make sure PowerShell 5 (or later, include PowerShell Core) and .NET Framework 4.5 (or later) are installed
+        - Set-ExecutionPolicy RemoteSigned -scope CurrentUser #change the execution policy (i.e. enable Powershell)
+        - virtualenv $HOME/venv
+        - source $HOME/venv/Scripts/activate
+      install:
+        - scoop install xmake
+      script: skip
+      after_success: skip
