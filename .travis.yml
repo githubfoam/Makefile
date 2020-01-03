@@ -21,9 +21,9 @@ matrix:
         # - pip install -r requirements.txt
       script:
         - wget https://github.com/xmake-io/xmake/releases/download/v$XMAKE_VERSION/xmake-v$XMAKE_VERSION.amd64.deb
-        - dpkg -i xmake-v2.2.9.amd64.deb
-        - xmake create test
-        - xmake
+        - sudo dpkg -i xmake-v2.2.9.amd64.deb
+        - sudo xmake create -t console_tbox test && cd test
+        - sudo xmake
         # - xmake f -p iphoneos # Switching to the iOS platform for compilation will reinstall the iOS version of the tbox library for linking
         # - xmake
         # - xmake create -l c -P ./test_xmake
@@ -151,6 +151,7 @@ matrix:
         # - xmake -y
         # - xmake f -m debug -y #mode.debug compile, xmake f is a shorthand for the xmake config
         # - scoop install xmake
-        - PowerShell -Command 'Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')' #Make sure PowerShell 5 (or later, include PowerShell Core) and .NET Framework 4.5 (or later) are installed
+        # - PowerShell -Command 'Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')' #Make sure PowerShell 5 (or later, include PowerShell Core) and .NET Framework 4.5 (or later) are installed
+        - Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh') #Make sure PowerShell 5 (or later, include PowerShell Core) and .NET Framework 4.5 (or later) are installed
         # - Set-ExecutionPolicy RemoteSigned -scope CurrentUser #change the execution policy (i.e. enable Powershell)
       after_success: skip
