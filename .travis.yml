@@ -113,7 +113,8 @@ matrix:
         - pip3 install virtualenv
         - virtualenv $HOME/venvpy3
         - source $HOME/venvpy3/Scripts/activate
-      install: skip
+      install:
+        - pip install -r requirements.txt
         # - Invoke-Expression (Invoke-Webrequest 'https://raw.githubusercontent.com/tboox/xmake/master/scripts/get.ps1' -UseBasicParsing).Content
       script: skip
       after_success: skip
@@ -123,9 +124,11 @@ matrix:
       language: shell
       env: PATH=/c/Python37:/c/Python37/Scripts:$PATH
       before_install:
+        - pip3 install virtualenv
         - virtualenv $HOME/venv
         - source $HOME/venv/Scripts/activate
       install:
+        - pip install -r requirements.txt
         - scoop install xmake
         - Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh') #Make sure PowerShell 5 (or later, include PowerShell Core) and .NET Framework 4.5 (or later) are installed
         - Set-ExecutionPolicy RemoteSigned -scope CurrentUser #change the execution policy (i.e. enable Powershell)
