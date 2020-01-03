@@ -138,10 +138,11 @@ matrix:
         - xmake create -t console_tbox test
         - cd test
         - xmake -y
-        - xmake f -p iphoneos # Switching to the iOS platform for compilation will reinstall the iOS version of the tbox library for linking
+        - xmake f -p iphoneos -y # Switching to the iOS platform for compilation will reinstall the iOS version of the tbox library for linking
         - xmake -y
-        - xmake f -p android [--ndk=~/android-ndk-r16b] # Switch to the Android platform arm64-v8a architecture compilation
+        - xmake f -p android [--ndk=~/android-ndk-r16b] -y # Switch to the Android platform arm64-v8a architecture compilation
         - xmake -y
+        - xmake f -m debug -y #mode.debug compile, xmake f is a shorthand for the xmake config
         # - scoop install xmake
         # - Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh') #Make sure PowerShell 5 (or later, include PowerShell Core) and .NET Framework 4.5 (or later) are installed
         # - Set-ExecutionPolicy RemoteSigned -scope CurrentUser #change the execution policy (i.e. enable Powershell)
