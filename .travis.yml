@@ -12,11 +12,11 @@ matrix:
       language: python
       python: 3.7
       before_install: skip
-        - pip3 install virtualenv
-        - virtualenv -p $(which python3) ~venvpy3
-        - source ~venvpy3/bin/activate
+        # - pip3 install virtualenv
+        # - virtualenv -p $(which python3) ~venvpy3
+        # - source ~venvpy3/bin/activate
       install: skip
-        - pip install -r requirements.txt
+        # - pip install -r requirements.txt
       script:
         - set -x
         - "wget https://raw.githubusercontent.com/tboox/xmake/master/scripts/get.sh -O -"
@@ -128,13 +128,13 @@ matrix:
         - PATH=/c/Python27:/c/Python27/Scripts:$PATH
         - PATH=/c/Users/travis/xmake:$PATH
       before_install: skip
-        - choco install python2 --version 2.7.17
-        - python --version
-        - pip install virtualenv
-        - virtualenv $HOME/venv
-        - source $HOME/venv/Scripts/activate
+        # - choco install python2 --version 2.7.17
+        # - python --version
+        # - pip install virtualenv
+        # - virtualenv $HOME/venv
+        # - source $HOME/venv/Scripts/activate
       install: skip
-        - pip install -r requirements.txt
+        # - pip install -r requirements.txt
       script:
         - PowerShell -Command 'Set-ExecutionPolicy -ExecutionPolicy RemoteSigned'
         - PowerShell -Command 'Invoke-Expression (Invoke-Webrequest 'https://raw.githubusercontent.com/tboox/xmake/master/scripts/get.ps1' -UseBasicParsing).Content'
