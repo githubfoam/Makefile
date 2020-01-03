@@ -124,7 +124,7 @@ matrix:
       language: shell
       env: PATH=/c/Python37:/c/Python37/Scripts:$PATH
       before_install:
-        - choco install python 
+        - choco install python
         - python --version
         - pip3 install virtualenv
         - virtualenv $HOME/venv
@@ -133,6 +133,6 @@ matrix:
         - pip install -r requirements.txt
         - scoop install xmake
         - Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh') #Make sure PowerShell 5 (or later, include PowerShell Core) and .NET Framework 4.5 (or later) are installed
-        - Set-ExecutionPolicy RemoteSigned -scope CurrentUser #change the execution policy (i.e. enable Powershell)
+        # - Set-ExecutionPolicy RemoteSigned -scope CurrentUser #change the execution policy (i.e. enable Powershell)
       script: skip
       after_success: skip
