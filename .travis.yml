@@ -54,7 +54,14 @@ matrix:
         # - curl -fsSL https://raw.githubusercontent.com/tboox/xmake/master/scripts/get.sh
         - wget https://github.com/xmake-io/xmake/releases/download/v$XMAKE_VERSION/xmake-v$XMAKE_VERSION.amd64.deb
         - sudo dpkg -i xmake-v2.2.9.amd64.deb
-        - xmake create test
+        - xmake create test #OK
+        - xmake f -m debug
+        - xmake
+        - xmake run
+        - xmake create -l c++ -t qt.quickapp test #create qt-based quickapp
+        - xmake
+        - xmake create -l c -t static test #create a static library project based on c
+        - xmake
       #   - xmake create -l c -P ./test_xmake
       #   - xmake
       #   - xmake run test_xmake
@@ -152,6 +159,7 @@ matrix:
       script:
         - PowerShell -Command 'Set-ExecutionPolicy -ExecutionPolicy RemoteSigned'
         - PowerShell -Command 'Invoke-Expression (Invoke-Webrequest 'https://raw.githubusercontent.com/tboox/xmake/master/scripts/get.ps1' -UseBasicParsing).Content'
+        - - xmake create test
         # - xmake create -t console_tbox test
         # - cd test
         # - xmake -y
