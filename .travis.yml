@@ -124,7 +124,7 @@ matrix:
       language: shell
       env:
         - PATH=/c/Python27:/c/Python27/Scripts:$PATH
-        - PATH=/c/Python27:/c/Python27/Scripts:$PATH
+        - PATH=/c/Users/travis/xmake:$PATH
       before_install:
         - choco install python2 --version 2.7.17
         - python --version
@@ -135,7 +135,7 @@ matrix:
         - pip install -r requirements.txt
         - PowerShell -Command 'Set-ExecutionPolicy -ExecutionPolicy RemoteSigned'
         - PowerShell -Command 'Invoke-Expression (Invoke-Webrequest 'https://raw.githubusercontent.com/tboox/xmake/master/scripts/get.ps1' -UseBasicParsing).Content'
-        - C:\Users\travis\xmake\xmake create -t console_tbox test
+        - xmake create -t console_tbox test
         - cd test
         - xmake
         # - scoop install xmake
