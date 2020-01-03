@@ -20,6 +20,8 @@ matrix:
       script:
         - set -x
         - "wget https://raw.githubusercontent.com/tboox/xmake/master/scripts/get.sh -O -"
+        - xmake f -p iphoneos -y # Switching to the iOS platform for compilation will reinstall the iOS version of the tbox library for linking
+        - xmake -y
         # - xmake create -l c -P ./test_xmake
         # - xmake
         # - xmake run test_xmake
