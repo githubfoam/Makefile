@@ -126,11 +126,13 @@ matrix:
       before_install:
         - choco install python
         - python --version
-        - pip3 install virtualenv
+        - pip install virtualenv
         - virtualenv $HOME/venv
         - source $HOME/venv/Scripts/activate
       install:
         - pip install -r requirements.txt
+        - xmake create -t console_tbox test && cd test
+        - xmake
         # - scoop install xmake
         # - Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh') #Make sure PowerShell 5 (or later, include PowerShell Core) and .NET Framework 4.5 (or later) are installed
         # - Set-ExecutionPolicy RemoteSigned -scope CurrentUser #change the execution policy (i.e. enable Powershell)
