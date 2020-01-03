@@ -20,7 +20,7 @@ matrix:
       install: skip
         # - pip install -r requirements.txt
       script:
-        - apt-get update
+        - sudo apt-get update
         - wget https://github.com/xmake-io/xmake/releases/download/v$XMAKE_VERSION/xmake-v$XMAKE_VERSION.amd64.deb
         - sudo dpkg -i xmake-v2.2.9.amd64.deb
         -  xmake create -t quickapp_qt -l c ++ appdemo
