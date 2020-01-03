@@ -132,7 +132,7 @@ matrix:
       install:
         - pip install -r requirements.txt
         - PowerShell -Command 'Set-ExecutionPolicy -ExecutionPolicy RemoteSigned'
-        - Invoke-Expression (Invoke-Webrequest 'https://raw.githubusercontent.com/tboox/xmake/master/scripts/get.ps1' -UseBasicParsing).Content
+        - PowerShell -Command 'Invoke-Expression (Invoke-Webrequest 'https://raw.githubusercontent.com/tboox/xmake/master/scripts/get.ps1' -UseBasicParsing).Content'
         - xmake create -t console_tbox test && cd test
         - xmake
         # - scoop install xmake
