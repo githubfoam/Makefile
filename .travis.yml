@@ -22,11 +22,12 @@ matrix:
       install: skip
         # - pip install -r requirements.txt
       script:
-        - set -x
         - wget https://github.com/xmake-io/xmake/releases/download/v$XMAKE_VERSION/xmake-v$XMAKE_VERSION.amd64.deb
         - sudo dpkg -i xmake-v2.2.9.amd64.deb
-        - xmake f -p iphoneos # Switching to the iOS platform for compilation will reinstall the iOS version of the tbox library for linking
+        - xmake create test
         - xmake
+        # - xmake f -p iphoneos # Switching to the iOS platform for compilation will reinstall the iOS version of the tbox library for linking
+        # - xmake
         # - xmake create -l c -P ./test_xmake
         # - xmake
         # - xmake run test_xmake
