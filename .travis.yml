@@ -7,26 +7,26 @@ matrix:
   fast_finish: true
   include:
 
-    # - name: "Python 3.7 on bionic"
-    #   dist: bionic
-    #   language: python
-    #   python: 3.7
-    #   before_install:
-    #     - pip3 install virtualenv
-    #     - virtualenv -p $(which python3) ~venvpy3
-    #     - source ~venvpy3/bin/activate
-    #   install:
-    #     - pip install -r requirements.txt
-    #   script:
-    #     - set -x
-    #     - "wget https://raw.githubusercontent.com/tboox/xmake/master/scripts/get.sh -O -"
-    #     # - xmake create -l c -P ./test_xmake
-    #     # - xmake
-    #     # - xmake run test_xmake
-    #     # - xmake run -d test_xmake
-    #   after_success:
-    #     - deactivate
-    #
+    - name: "Python 3.7 on bionic"
+      dist: bionic
+      language: python
+      python: 3.7
+      before_install:
+        - pip3 install virtualenv
+        - virtualenv -p $(which python3) ~venvpy3
+        - source ~venvpy3/bin/activate
+      install:
+        - pip install -r requirements.txt
+      script:
+        - set -x
+        - "wget https://raw.githubusercontent.com/tboox/xmake/master/scripts/get.sh -O -"
+        # - xmake create -l c -P ./test_xmake
+        # - xmake
+        # - xmake run test_xmake
+        # - xmake run -d test_xmake
+      after_success:
+        - deactivate
+
     # - name: "Python 2.7 on xenial"
     #   dist: xenial
     #   language: python
@@ -138,11 +138,11 @@ matrix:
         - xmake create -t console_tbox test
         - cd test
         - xmake -y
-        - xmake f -p iphoneos -y # Switching to the iOS platform for compilation will reinstall the iOS version of the tbox library for linking
-        - xmake -y
-        - xmake f -p android [--ndk=~/android-ndk-r16b] -y # Switch to the Android platform arm64-v8a architecture compilation
-        - xmake -y
-        - xmake f -m debug -y #mode.debug compile, xmake f is a shorthand for the xmake config
+        # - xmake f -p iphoneos -y # Switching to the iOS platform for compilation will reinstall the iOS version of the tbox library for linking
+        # - xmake -y
+        # - xmake f -p android [--ndk=~/android-ndk-r16b] -y # Switch to the Android platform arm64-v8a architecture compilation
+        # - xmake -y
+        # - xmake f -m debug -y #mode.debug compile, xmake f is a shorthand for the xmake config
         # - scoop install xmake
         # - Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh') #Make sure PowerShell 5 (or later, include PowerShell Core) and .NET Framework 4.5 (or later) are installed
         # - Set-ExecutionPolicy RemoteSigned -scope CurrentUser #change the execution policy (i.e. enable Powershell)
