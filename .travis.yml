@@ -20,9 +20,9 @@ matrix:
       install: skip
         # - pip install -r requirements.txt
       script:
-        # - wget https://github.com/xmake-io/xmake/releases/download/v$XMAKE_VERSION/xmake-v$XMAKE_VERSION.amd64.deb
-        # - sudo dpkg -i xmake-v2.2.9.amd64.deb
-        - sudo bash <(curl -fsSL https://raw.githubusercontent.com/tboox/xmake/master/scripts/get.sh)
+        - wget https://github.com/xmake-io/xmake/releases/download/v$XMAKE_VERSION/xmake-v$XMAKE_VERSION.amd64.deb
+        - sudo dpkg -i xmake-v2.2.9.amd64.deb
+        # - bash <(curl -fsSL https://raw.githubusercontent.com/tboox/xmake/master/scripts/get.sh)
         - sudo xmake create -t console_tbox test && cd test
         - sudo xmake
         # - xmake f -p iphoneos # Switching to the iOS platform for compilation will reinstall the iOS version of the tbox library for linking
