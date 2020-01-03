@@ -122,9 +122,9 @@ matrix:
     - name: "Python 3.7  on Windows"
       os: windows
       language: shell
-      env: PATH=/c/Python37:/c/Python37/Scripts:$PATH
+      env: PATH=/c/Python27:/c/Python27/Scripts:$PATH
       before_install:
-        - choco install python
+        - choco install python2 --version 2.7.17
         - python --version
         - pip install virtualenv
         - virtualenv $HOME/venv
