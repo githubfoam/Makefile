@@ -7,35 +7,35 @@ matrix:
   fast_finish: true
   include:
 
-    # - name: "Python 3.7 on bionic"
-    #   dist: bionic
-    #   language: python
-    #   python: 3.7
-    #   env:
-    #   - XMAKE_VERSION="2.2.9"
-    #   before_install: skip
-    #     # - pip3 install virtualenv
-    #     # - virtualenv -p $(which python3) ~venvpy3
-    #     # - source ~venvpy3/bin/activate
-    #   install: skip
-    #     # - pip install -r requirements.txt
-    #   script: skip
-    #     # - sudo apt-get update
-    #     # - wget https://github.com/xmake-io/xmake/releases/download/v$XMAKE_VERSION/xmake-v$XMAKE_VERSION.amd64.deb
-    #     # - sudo dpkg -i xmake-v2.2.9.amd64.deb
-    #     # - xmake create test
-    #     # - xmake f -p linux -a x86 -m debug
-    #     # - bash <(curl -fsSL https://raw.githubusercontent.com/tboox/xmake/master/scripts/get.sh)
-    #     # - sudo xmake create -t console_tbox test && cd test
-    #     # - sudo xmake
-    #     # - xmake f -p iphoneos # Switching to the iOS platform for compilation will reinstall the iOS version of the tbox library for linking
-    #     # - xmake
-    #     # - xmake create -l c -P ./test_xmake
-    #     # - xmake
-    #     # - xmake run test_xmake
-    #     # - xmake run -d test_xmake
-    #   after_success: skip
-    #   #   - deactivate
+    - name: "Python 3.7 on bionic"
+      dist: bionic
+      language: python
+      python: 3.7
+      env:
+      - XMAKE_VERSION="2.2.9"
+      before_install: skip
+        # - pip3 install virtualenv
+        # - virtualenv -p $(which python3) ~venvpy3
+        # - source ~venvpy3/bin/activate
+      install: skip
+        # - pip install -r requirements.txt
+      script: skip
+        # - sudo apt-get update
+        # - wget https://github.com/xmake-io/xmake/releases/download/v$XMAKE_VERSION/xmake-v$XMAKE_VERSION.amd64.deb
+        # - sudo dpkg -i xmake-v2.2.9.amd64.deb
+        # - xmake create test
+        # - xmake f -p linux -a x86 -m debug
+        # - bash <(curl -fsSL https://raw.githubusercontent.com/tboox/xmake/master/scripts/get.sh)
+        # - sudo xmake create -t console_tbox test && cd test
+        # - sudo xmake
+        # - xmake f -p iphoneos # Switching to the iOS platform for compilation will reinstall the iOS version of the tbox library for linking
+        # - xmake
+        # - xmake create -l c -P ./test_xmake
+        # - xmake
+        # - xmake run test_xmake
+        # - xmake run -d test_xmake
+      after_success: skip
+      #   - deactivate
 
     - name: "Python 2.7 on xenial"
       dist: xenial
@@ -54,14 +54,7 @@ matrix:
         # - curl -fsSL https://raw.githubusercontent.com/tboox/xmake/master/scripts/get.sh
         - wget https://github.com/xmake-io/xmake/releases/download/v$XMAKE_VERSION/xmake-v$XMAKE_VERSION.amd64.deb
         - sudo dpkg -i xmake-v2.2.9.amd64.deb
-        - xmake create test #OK
-        # - xmake f -m debug -y
-        - xmake -y
-        - xmake run
-        - xmake create -l c++ -t qt.quickapp test #create qt-based quickapp
-        - xmake
-        - xmake create -l c -t static test #create a static library project based on c
-        - xmake
+        - xmake create test
       #   - xmake create -l c -P ./test_xmake
       #   - xmake
       #   - xmake run test_xmake
@@ -69,24 +62,24 @@ matrix:
       after_success:
         - deactivate
 
-    # - name: "Python 2.7.17 on macOS xcode10.2"
-    #   os: osx
-    #   osx_image: xcode10.2
-    #   language: shell
-    #   before_install:
-    #     # - pip install virtualenv
-    #     # - virtualenv -p $(which python2) ~venvpy2
-    #     # - source ~venvpy2/bin/activate
-    #   install:
-    #     # - pip install -r requirements.txt
-    #     - brew install xmake
-    #   script:
-    #     - xmake create test
-    #     # - xmake create -l c -P ./test_xmake
-    #     # - xmake
-    #     # - xmake run test_xmake
-    #     # - xmake run -d test_xmake
-    #   after_success: skip
+    - name: "Python 2.7.17 on macOS xcode10.2"
+      os: osx
+      osx_image: xcode10.2
+      language: shell
+      before_install:
+        # - pip install virtualenv
+        # - virtualenv -p $(which python2) ~venvpy2
+        # - source ~venvpy2/bin/activate
+      install:
+        # - pip install -r requirements.txt
+        - brew install xmake
+      script:
+        - xmake create test
+        # - xmake create -l c -P ./test_xmake
+        # - xmake
+        # - xmake run test_xmake
+        # - xmake run -d test_xmake
+      after_success: skip
     #
     # - name: "Python 3.7.5 on macOS xcode10.2"
     #   os: osx
@@ -142,34 +135,33 @@ matrix:
     #   script: skip
     #   after_success: skip
 
-    # - name: "Python 3.7  on Windows"
-    #   os: windows
-    #   language: shell
-    #   env:
-    #     - PATH=/c/Python27:/c/Python27/Scripts:$PATH
-    #     - PATH=/c/Users/travis/xmake:$PATH
-    #   before_install: skip
-    #     # - choco install python2 --version 2.7.17
-    #     # - python --version
-    #     # - pip install virtualenv
-    #     # - virtualenv $HOME/venv
-    #     # - source $HOME/venv/Scripts/activate
-    #   install: skip
-    #     # - pip install -r requirements.txt
-    #   script:
-    #     - PowerShell -Command 'Set-ExecutionPolicy -ExecutionPolicy RemoteSigned'
-    #     - PowerShell -Command 'Invoke-Expression (Invoke-Webrequest 'https://raw.githubusercontent.com/tboox/xmake/master/scripts/get.ps1' -UseBasicParsing).Content'
-    #     - - xmake create test
-    #     # - xmake create -t console_tbox test
-    #     # - cd test
-    #     # - xmake -y
-    #     # - xmake f -p iphoneos -y # Switching to the iOS platform for compilation will reinstall the iOS version of the tbox library for linking
-    #     # - xmake -y
-    #     # - xmake f -p android [--ndk=~/android-ndk-r16b] -y # Switch to the Android platform arm64-v8a architecture compilation
-    #     # - xmake -y
-    #     # - xmake f -m debug -y #mode.debug compile, xmake f is a shorthand for the xmake config
-    #     # - scoop install xmake
-    #     # - PowerShell -Command 'Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')' #Make sure PowerShell 5 (or later, include PowerShell Core) and .NET Framework 4.5 (or later) are installed
-    #     # - iwr -useb get.scoop.sh | iex
-    #     # - Set-ExecutionPolicy RemoteSigned -scope CurrentUser #change the execution policy (i.e. enable Powershell)
-    #   after_success: skip
+    - name: "Python 3.7  on Windows"
+      os: windows
+      language: shell
+      env:
+        - PATH=/c/Python27:/c/Python27/Scripts:$PATH
+        - PATH=/c/Users/travis/xmake:$PATH
+      before_install: skip
+        # - choco install python2 --version 2.7.17
+        # - python --version
+        # - pip install virtualenv
+        # - virtualenv $HOME/venv
+        # - source $HOME/venv/Scripts/activate
+      install: skip
+        # - pip install -r requirements.txt
+      script:
+        - PowerShell -Command 'Set-ExecutionPolicy -ExecutionPolicy RemoteSigned'
+        - PowerShell -Command 'Invoke-Expression (Invoke-Webrequest 'https://raw.githubusercontent.com/tboox/xmake/master/scripts/get.ps1' -UseBasicParsing).Content'
+        # - xmake create -t console_tbox test
+        # - cd test
+        # - xmake -y
+        # - xmake f -p iphoneos -y # Switching to the iOS platform for compilation will reinstall the iOS version of the tbox library for linking
+        # - xmake -y
+        # - xmake f -p android [--ndk=~/android-ndk-r16b] -y # Switch to the Android platform arm64-v8a architecture compilation
+        # - xmake -y
+        # - xmake f -m debug -y #mode.debug compile, xmake f is a shorthand for the xmake config
+        # - scoop install xmake
+        # - PowerShell -Command 'Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')' #Make sure PowerShell 5 (or later, include PowerShell Core) and .NET Framework 4.5 (or later) are installed
+        # - iwr -useb get.scoop.sh | iex
+        # - Set-ExecutionPolicy RemoteSigned -scope CurrentUser #change the execution policy (i.e. enable Powershell)
+      after_success: skip
