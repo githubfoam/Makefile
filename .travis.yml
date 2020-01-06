@@ -1,6 +1,6 @@
 ---
 notifications:
-  slack:
+  email:
     on_failure: always
 
 matrix:
