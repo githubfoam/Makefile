@@ -1,4 +1,4 @@
-name: "docker CI workflow"
+name: "c/c++ CI workflow"
 
 
 on:
@@ -19,11 +19,11 @@ jobs:
     - name: "os fingerprinting"
       run: hostnamectl status   
     - name: "make build"
-      run: make build      
+      run: make -f makec randgen      
     - name: "make run"
-      run: make run       
-    - name: "make teardown"
-      run: make teardown 
+      run: ./randgens      
+    - name: "make clean"
+      run: make -f makec clean
 
   ubuntu-2004-nagios-docker-job:
     name: "ubuntu-20.04 makefile"
@@ -33,11 +33,11 @@ jobs:
     - name: "os fingerprinting"
       run: hostnamectl status   
     - name: "make build"
-      run: make build      
+      run: make -f makec randgen      
     - name: "make run"
-      run: make run       
-    - name: "make teardown"
-      run: make teardown    
+      run: ./randgens      
+    - name: "make clean"
+      run: make -f makec clean   
 
 #https://support.nagios.com/kb/article/nagios-core-installing-nagios-core-from-source-96.html#Ubuntu
   ubuntu-1604-nagios-docker-job:
@@ -48,8 +48,8 @@ jobs:
     - name: "os fingerprinting"
       run: hostnamectl status    
     - name: "make build"
-      run: make build      
+      run: make -f makec randgen      
     - name: "make run"
-      run: make run       
-    - name: "make teardown"
-      run: make teardown       
+      run: ./randgens      
+    - name: "make clean"
+      run: make -f makec clean      
