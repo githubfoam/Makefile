@@ -3,7 +3,7 @@ name: "docker CI workflow"
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
   schedule:
       - cron:  '0 0 * * 0' #At 00:00 on Sunday every week
 
