@@ -21,7 +21,7 @@ jobs:
     - name: "make build"
       run: make -f makec randgen      
     - name: "make run"
-      run: ./randgens      
+      run: ./randgen     
     - name: "make clean"
       run: make -f makec clean
 
