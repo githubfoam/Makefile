@@ -1,4 +1,4 @@
-randgen: randgen.c
+randgen : randgen.c
         cc -o randgen randgen.c
 clean :
         rm randgen
